@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+    <form action="/first_app/details/" method="POST" enctype=multipart/form-data>
+      {% csrf_token %}
+      <div class="form-group">
+        <label> Full Name </label>
+        <input type="text" class="form-control" name="full_name" id="name" placeholder="Enter Full Name" required>
+      </div>
+      <div class="form-group">
+        <label for="img">Profile Picture</label>
+        <input type="file" id="img" name="img" accept="image/*">
+        <input type="text" id="id" name="id" hidden>
+      </div>
+      <div class="form-group">
+        <label >Designation</label>
+          <select name="designation" id="dsn" required>
+            <option value="Back-End Developer" name="bkend">Back-End Developer</option>
+            <option value="Front-End Developer" name="frend">Front-End Developer</option>
+            <option value="MIS" name="mis">MIS</option>
+            <option value="Operations" name="opt">Operations</option>
+          </select>
+      </div>
+      <div class="form-group">
+        <label> Expected Salary </label>
+        <input type="text" class="form-control" name="salary" id="ex_salary" placeholder="Enter Your Expected Salary" required>
+      </div>
+      <div class="form-group">
+        <label> Contact Number </label>
+        <input type="text" class="form-control" name="contact" id="contact" placeholder="Enter Contact Details" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</body>
+</html>
