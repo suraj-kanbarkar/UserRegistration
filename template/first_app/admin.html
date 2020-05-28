@@ -69,14 +69,19 @@
 
 <script type="text/javascript">
   function getdata(a, action){
-     console.log("first_app/login/?username=suraj_s&password=pass1234"+"&id="+a+"&action="+action)
+     console.log(a, action)
      urls = "first_app/login/?username=suraj_s&password=pass1234"+"&id="+a+"&action="+action,
       $.ajax({
       url: urls,
       type: "GET", //send it through get method
       success: function(response) {
         // Do something
-        window.location.href = response.url
+        if (action === "edit"){
+          window.location.href = response.url
+        }
+        else{
+        window.location.reload()
+        }
       },
       error: function(xhr) {
         //Do Something to handle error
@@ -84,11 +89,5 @@
     });
     };
 </script>
-
-<!--<script type="text/javascript">-->
-<!--  function getda(a){-->
-<!--    alert(a)-->
-<!--    };-->
-<!--</script>-->
 
 </html>
