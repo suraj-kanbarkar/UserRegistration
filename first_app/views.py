@@ -79,7 +79,7 @@ def change_pass(request):
                 u = User.objects.get(email=email)
                 u.set_password(password1)
                 u.save()
-                return HttpResponseRedirect('/first_app/login/', status=200)
+                return HttpResponseRedirect('/first_app/login/')
             else:
                 message = "Passwords doesn't Match"
         except ObjectDoesNotExist:
@@ -114,7 +114,7 @@ def login(request):
                     if hasattr(user, 'userinfo'):
                         u_info.invalid_login_attempts = 0
                         u_info.save()
-                    return HttpResponseRedirect('/first_app/base/')
+                    return HttpResponseRedirect('/first_app/base/?user_id={}'.format(user.id))
             else:
                 u_info = user.userinfo
                 u_info.invalid_login_attempts = u_info.invalid_login_attempts + 1
@@ -161,7 +161,7 @@ def get_approval_pending_users(request):
 
 def base(request):
     message = 'Please Fill The Details'
-    return render(request, 'first_app/base.html', {'message': message})
+    return render(request, 'first_app/base.html', {'message': message, 'user_id': request.GET.get('user_id')})
 
 
 def admin(request):
@@ -175,12 +175,15 @@ def employee_detail(request):
         designation = request.POST.get('designation')
         salary = request.POST.get('salary')
         contact = request.POST.get('contact')
-
-        print(full_name, img, designation, salary)
-        user = UserInfo.objects.create(name=full_name, profile_picture=img, salary=salary, contact=contact,
-                                       designation=designation)
-        user.save()
-        # f = UserInfo(full_name=full_name)
+        id = request.POST.get('id')
+        user = User.objects.get(id=id)
+        u_info = user.userinfo
+        u_info.name = full_name
+        u_info.profile_picture = img
+        u_info.salary = salary
+        u_info.contact = contact
+        u_info.designation = designation
+        u_info.save()
         message = "Thanks, Your Application Has Been Submitted Successfully"
         return render(request, 'first_app/redirect_home.html', {'message': message})
 

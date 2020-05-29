@@ -8,6 +8,7 @@
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>
+  <p><b> Enter Your Details </b></p>
     <form action="/first_app/details/" method="POST" enctype=multipart/form-data>
       {% csrf_token %}
       <div class="form-group">
@@ -17,7 +18,7 @@
       <div class="form-group">
         <label for="img">Profile Picture</label>
         <input type="file" id="img" name="img" accept="image/*">
-        <input type="text" id="id" name="id" hidden>
+        <input type="text" id="id" name="id"  value="{{user_id}}" hidden>
       </div>
       <div class="form-group">
         <label >Designation</label>
@@ -29,8 +30,8 @@
           </select>
       </div>
       <div class="form-group">
-        <label> Expected Salary </label>
-        <input type="text" class="form-control" name="salary" id="ex_salary" placeholder="Enter Your Expected Salary" required>
+        <label> Salary </label>
+        <input type="text" class="form-control" name="salary" id="ex_salary" placeholder="Enter Your Salary" required>
       </div>
       <div class="form-group">
         <label> Contact Number </label>

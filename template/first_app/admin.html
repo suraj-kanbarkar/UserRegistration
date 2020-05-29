@@ -34,7 +34,7 @@
             <th class="th-sm">Employee Id</th>
             <th class="th-sm">Name</th>
             <th class="th-sm">Profile Picture</th>
-            <th class="th-sm">Salary Expected</th>
+            <th class="th-sm">Salary</th>
             <th class="th-sm">Contact</th>
             <th class="th-sm">Designation</th>
             <th class="th-sm">Approved</th>
@@ -70,7 +70,8 @@
 <script type="text/javascript">
   function getdata(a, action){
      console.log(a, action)
-     urls = "first_app/login/?username=suraj_s&password=pass1234"+"&id="+a+"&action="+action,
+     params = window.location.search
+     urls = "first_app/login/"+params+"&id="+a+"&action="+action,
       $.ajax({
       url: urls,
       type: "GET", //send it through get method

@@ -9,6 +9,7 @@
 </head>
 <body>
     <div>
+      <p><b> Enter Your Details </b></p>
         <form action="/first_app/edit_details/" method="POST" enctype=multipart/form-data>
           {% csrf_token %}
             <div class="form-group">
@@ -26,21 +27,21 @@
           <div class="form-group">
             <label >Designation</label>
               <select name="designation" id="dsn" required>
-                <option value="{{ user.designation }}" name="bkend">Back-End Developer</option>
-                <option value="{{ user.designation }}" name="frend">Front-End Developer</option>
-                <option value="{{ user.designation }}" name="mis">MIS</option>
-                <option value="{{ user.designation }}" name="opt">Operations</option>
+                <option value="{{ user.designation }}">Back-End Developer</option>
+                <option value="{{ user.designation }}">Front-End Developer</option>
+                <option value="{{ user.designation }}">MIS</option>
+                <option value="{{ user.designation }}">Operations</option>
               </select>
           </div>
           <div class="form-group">
-            <label> Expected Salary </label>
-            <input type="text" class="form-control" name="salary" id="ex_salary"  value="{{user.salary}}" placeholder="Enter Your Expected Salary" required>
+            <label> Salary </label>
+            <input type="text" class="form-control" name="salary" id="ex_salary"  value="{{user.salary}}" placeholder="Enter Your Salary" required>
           </div>
           <div class="form-group">
             <label> Contact Number </label>
             <input type="text" class="form-control" value="{{ user.contact }}" name="contact" id="contact" placeholder="Enter Contact Details" required>
           </div>
-          <button type="submit" class="btn btn-primary" onclick="getdata({{ user.id }})">Submit</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 </body>
